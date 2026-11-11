@@ -2,7 +2,7 @@
 
 A modular C++17 networking lab project implementing **ARP** (RFC 826 / RFC 5227) over a simulated Ethernet segment and
 **Telnet** (RFC 854-858, 1073, 1091) over real TCP sockets, paired with a Mini-Wireshark packet dissector and `.pcap` exporter.
-Same architecture as the BOOTP + DNS suite: protocol headers -> sockets/tap -> engines -> dissector -> 3-pane Win32 UI.
+
 
 ## Project Phases
 
