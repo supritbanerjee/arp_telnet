@@ -43,6 +43,14 @@ A modular C++17 networking lab project implementing **ARP** (RFC 826 / RFC 5227)
 
 Linux / WSL (core + tests, sanitizers on): `make test`.
 
+macOS (core + tests, no GUI):
+       xcode-select --install
+       make test
+       make all
+   mini_wireshark.exe is Windows-only. On macOS use build/sniffer_cli --tree,
+   or open an exported .pcap in Wireshark (brew install --cask wireshark).
+
+   
 ## Live Demo Quick-Start
 
 1. **All-in-one:** launch `build/mini_wireshark.exe` and click **Run ARP+Telnet Demo**. Try filters: `arp.isgratuitous`, `arp.opcode == 2`,
@@ -53,7 +61,6 @@ Linux / WSL (core + tests, sanitizers on): `make test`.
    * Terminal 3: `build/telnet_server.exe`    (users `admin/netlab`, `guest/guest`)
    * Terminal 4: `build/telnet_client.exe`    (interactive) or `--user admin --pass netlab --cmd arp --cmd whoami`
 
-## Adding this to the BOOTP + DNS project
 
 The suites are independent (separate tap port 9998 vs 9999, own headers) so both can run side by side. To get ONE Wireshark showing all four
 protocols: add `case 0x0806` (ARP) and the TCP/23 branch from `dissector.hpp` into your `dissect()`, and have your `TapMirror` emit the same
